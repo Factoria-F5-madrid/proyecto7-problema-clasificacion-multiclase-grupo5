@@ -4,7 +4,7 @@ import os
 from fastapi import FastAPI, HTTPException
 from contextlib import asynccontextmanager
 
-from backend.models.schema import FeaturePayload, CoverTypePrediction
+from backend.models.schema import CoverTypePayload, CoverTypeResponse
 from backend.services import ml_models
 
 # Use asynccontextmanager to manage application startup/shutdown events
@@ -34,10 +34,10 @@ def read_root():
 
 @app.post(
     os.getenv("XGBOOST_URL"),
-    response_model=CoverTypePrediction,
+    response_model=CoverTypeResponse,
     summary="Predict Cover Type using XGBoost"
 )
-def predict_cover_type_xgboost(payload: FeaturePayload):
+def predict_cover_type_xgboost(payload: CoverTypePayload):
     """
     Predicts the forest Cover_Type (a numeric class) based on the input features
     using the trained XGBoost model.
@@ -46,7 +46,7 @@ def predict_cover_type_xgboost(payload: FeaturePayload):
         # Convert the Pydantic model payload to a dictionary for the service
         prediction = ml_models.predict_xgboost(payload.model_dump())
         
-        return CoverTypePrediction(cover_type=prediction)
+        return CoverTypeResponse(cover_type=prediction)
     
     except RuntimeError as e:
         # Catch errors related to un-loaded models
@@ -58,12 +58,12 @@ def predict_cover_type_xgboost(payload: FeaturePayload):
 
 @app.post(
     os.getenv("RANDOM_FOREST_URL"),
-    response_model=CoverTypePrediction,
+    response_model=CoverTypeResponse,
     summary="Predict Cover Type using Random Forest (Not Implemented)",
     # Mark this endpoint as deprecated until implemented
     deprecated=True
 )
-def predict_cover_type_random_forest(payload: FeaturePayload):
+def predict_cover_type_random_forest(payload: CoverTypePayload):
     """
     [Placeholder] Endpoint to predict the forest Cover_Type using the
     trained Random Forest model.

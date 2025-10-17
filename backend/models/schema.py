@@ -18,7 +18,7 @@ FEATURES = [
     'Soil_Type_37', 'Soil_Type_38', 'Soil_Type_39', 'Soil_Type_40'
 ]
 
-class FeaturePayload(BaseModel):
+class CoverTypePayload(BaseModel):
     """
     Schema for the input features payload for model inference.
     All fields are expected to be numeric (float or int).
@@ -27,7 +27,7 @@ class FeaturePayload(BaseModel):
     # Use a dictionary comprehension to create fields with float type
     __annotations__ = {f: int for f in FEATURES}
 
-class CoverTypePrediction(BaseModel):
+class CoverTypeResponse(BaseModel):
     """
     Schema for the model prediction response.
     """
