@@ -6,8 +6,6 @@ Este proyecto tiene como objetivo desarrollar un modelo de machine learning capa
 
 La clasificación multiclase es un enfoque de aprendizaje supervisado en el que cada instancia se asigna a una única clase entre tres o más posibles. A diferencia de la clasificación binaria, este tipo de modelos deben distinguir entre múltiples categorías excluyentes.
 
-Como recurso opcional, se sugiere el uso del dataset "Forest Cover Type Dataset". Sin embargo, se alienta a lxs participantes a elegir datasets auténticos que representen sus propios intereses o problemas relevantes.
-
 
 ## Estructura del proyecto
 ```
