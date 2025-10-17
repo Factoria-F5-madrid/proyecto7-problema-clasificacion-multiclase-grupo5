@@ -75,5 +75,6 @@ Abrir y ejecutar los notebooks en `backend/notebooks/`.
 - Integrar `frontend/` con la API para inferencia.
 - Añadir validación, tests y CI.
 
+
 ## Convenciones
 - Ramas: trabajo en feature branches y merge hacia `development` mediante PR/MR.
